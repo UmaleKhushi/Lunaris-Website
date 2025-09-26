@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunarius</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Extra styling for small analysis button */
+    .btn-small {
+      font-size: 14px;
+      padding: 6px 14px;
+      margin-top: 12px; /* push it downward */
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <span class="glow-text">Lunarius</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="research.html">Research</a></li>
+    </ul>
+  </nav>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1><span class="gradient-text">AI-Driven</span> Hazard Detection</h1>
+    <h2>& Safe Path Planner</h2>
+    <p>Revolutionizing lunar rover missions with intelligent terrain analysis and autonomous navigation planning</p>
+    <div class="buttons">
+      <a href="#demo"><button class="btn btn-primary glow-btn">Try Live Demo →</button></a>
+      <a href="#demo"><button class="btn btn-secondary glow-btn">▶ Watch Demo</button></a>
+    </div>
+  </section>
+  <!-- Problem Section -->
+  <section class="problem-section">
+    <div class="problem-card fade-element">
+      <h2>⚠️ The Problem 
+        <span class="toggle-arrow" onclick="toggleSolution(this)">▶</span>
+      </h2>
+      <ul>
+        <li><span class="highlight-red">Mission Failures:</span> Rovers getting stuck in craters, boulders, or steep slopes leading to costly mission terminations.</li>
+        <li><span class="highlight-yellow">Slow Decision Making:</span> Manual terrain analysis and path planning can take days, delaying critical operations.</li>
+        <li><span class="highlight-blue">Limited Visibility:</span> Current systems struggle with shadow analysis and complex terrain interpretation.</li>
+      </ul>
+    </div>
+    <div class="solution-card fade-element" id="solution-card">
+      <h2>🛡️ Our Solution</h2>
+      <ul>
+        <li><span class="highlight-blue">AI-Powered Detection:</span> Neural networks identify hazards with 99.7% accuracy in real time.</li>
+        <li><span class="highlight-green">Intelligent Path Planning:</span> Automated safe route generation considering terrain complexity and mission objectives.</li>
+        <li><span class="highlight-purple">3D Visualization:</span> Complete terrain analysis including shadow detection and slope assessment.</li>
+      </ul>
+      <div class="steps">
+        <div class="step">① Satellite Image Input</div>
+        <div class="step">② AI Hazard Analysis</div>
+        <div class="step">③ Safe Path Generation</div>
+      </div>
+    </div>
+  </section>
+  <!-- Demo Section -->
+  <section id="demo" class="demo-section">
+    <h1 class="demo-title">Live <span class="highlight">Hazard Detection</span> Demo</h1>
+    <p class="demo-subtitle">Upload a lunar terrain image and watch our AI system identify hazards and plan safe navigation paths in real-time.</p>
+    <div class="demo-container">
+      <!-- Upload Box -->
+      <div class="upload-box fade-element">
+        <h3> Upload Terrain Image</h3>
+        <form>
+          <div class="upload-area">
+            <p>Drop your image here or click to browse</p>
+            <p class="hint">Support for JPG, PNG, and other formats</p>
+            <input type="file" id="fileUpload" hidden>
+            <button type="button" class="btn btn-primary glow-btn" onclick="document.getElementById('fileUpload').click()">Browse Computer Files</button>
+            <!-- New Button Added -->
+            <a href="report.html">
+              <button type="button" class="btn btn-primary glow-btn btn-small">🚀 Start AI Analysis</button>
+            </a>
+          </div>
+        </form>
+      </div>
+      <!-- Analysis Box -->
+      <div class="analysis-box fade-element">
+        <h3>Terrain Analysis</h3>
+        <div class="analysis-area" id="analysisResult">
+          <p>Upload an image to begin analysis</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cutting-Edge Innovation Section -->
+  <section class="innovation-section">
+    <h2 class="innovation-title">
+      Cutting-Edge <span class="innovation-highlight">Innovation</span>
+    </h2>
+    <div class="innovation-desc">
+      Our advanced AI system leverages the latest in machine learning and computer vision technologies
+    </div>
+    <div class="innovation-row">
+      <div class="innovation-card hybrid">
+        <span class="innovation-icon">&#129504;</span>
+        <h3>Hybrid AI + Physics</h3>
+        <p>Combines deep learning with physics-based modeling for unprecedented accuracy in terrain analysis</p>
+        <span class="innovation-underline"></span>
+      </div>
+      <div class="innovation-card visual">
+        <span class="innovation-icon">&#128737;</span>
+        <h3>3D Hazard Visualization</h3>
+        <p>Advanced 3D mapping technology provides comprehensive terrain understanding and risk assessment</p>
+        <span class="innovation-underline"></span>
+      </div>
+      <div class="innovation-card realtime">
+        <span class="innovation-icon">&#9889;</span>
+        <h3>Real-time Detection</h3>
+        <p>Lightning-fast processing enables immediate hazard identification and path optimization</p>
+        <span class="innovation-underline"></span>
+      </div>
+      <div class="innovation-card scalable">
+        <span class="innovation-icon">&#127760;</span>
+        <h3>Cross-domain Scalability</h3>
+        <p>Adaptable architecture extends beyond lunar missions to Mars and other planetary exploration</p>
+        <span class="innovation-underline"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Powered by Advanced Technology Section -->
+  <section class="powered-section">
+    <h2>Powered by <span class="highlight-tech">Advanced Technology</span></h2>
+    <p>
+      Built with industry-leading frameworks and libraries for maximum performance and reliability
+    </p>
+    <div class="tech-icons-row">
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch">
+        <div class="tech-title">PyTorch</div>
+        <div class="tech-type">AI/ML</div>
+      </div>
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+        <div class="tech-title">Python</div>
+        <div class="tech-type">Backend</div>
+      </div>
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV">
+        <div class="tech-title">OpenCV</div>
+        <div class="tech-type">Computer Vision</div>
+      </div>
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask">
+        <div class="tech-title">Flask</div>
+        <div class="tech-type">API</div>
+      </div>
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+        <div class="tech-title">React</div>
+        <div class="tech-type">Frontend</div>
+      </div>
+      <div class="tech-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+        <div class="tech-title">TensorFlow</div>
+        <div class="tech-type">AI/ML</div>
+      </div>
+    </div>
+    <div class="system-arch-section">
+      <div class="system-arch-title">System Architecture</div>
+      <div class="steps-arch-row">
+        <div class="arch-step-card">
+          <div class="arch-step-num">1</div>
+          <div class="arch-step-title">Data Processing</div>
+          <div class="arch-step-desc">Satellite imagery preprocessing with OpenCV and custom filters.</div>
+        </div>
+        <div class="arch-step-card">
+          <div class="arch-step-num">2</div>
+          <div class="arch-step-title">AI Analysis</div>
+          <div class="arch-step-desc">Deep learning models powered by PyTorch and TensorFlow.</div>
+        </div>
+        <div class="arch-step-card">
+          <div class="arch-step-num">3</div>
+          <div class="arch-step-title">Path Generation</div>
+          <div class="arch-step-desc">Intelligent routing algorithms with real-time optimization.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="script.js"></script>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2 class="footer-logo">Lunarius</h2>
+        <p>
+          Advanced AI-driven hazard detection and safe path planning for lunar rover
+          missions. Ensuring mission success through intelligent terrain analysis.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#demo">Demo</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="research.html">Research</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>Built for SIH 2025</p>
+        <p>Space Innovation Challenge</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Lunarius. Advancing lunar exploration through AI innovation.</p>
+    </div>
+  </footer>
+</body>
+</html>

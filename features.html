@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lunarius — Features</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #09152b;
+      color: #fff;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 8%;
+      background: rgba(10, 21, 33, 0.95);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 23px;
+      color: #00d4ff;
+    }
+    .glow-text {
+      color: #00d4ff;
+      text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+      animation: glowPulse 2s infinite alternate;
+    }
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 8px #00d4ff, 0 0 16px #00d4ff; }
+      to { text-shadow: 0 0 15px #00f2ff, 0 0 30px #00f2ff; }
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #00d4ff; 
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(0, 212, 255, 0.12);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+    .nav-links li a:hover {
+      color: #00f2ff;
+      background: rgba(0, 212, 255, 0.2);
+      box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
+    }
+    .features-main {
+      padding: 85px 0 30px 0;
+      background: linear-gradient(120deg,#0e1833 70%,#191936 100%);
+      min-height: 80vh;
+    }
+    .features-title {
+      font-size: 60px;
+      font-weight: 700;
+      letter-spacing: -3px;
+      text-align: center;
+      margin-bottom: 18px;
+      margin-top: 0;
+      color: #fff;
+    }
+    .features-title .features-highlight {
+      color: #00d4ff;
+    }
+    .features-subtitle {
+      color: #b0cae6;
+      text-align: center;
+      font-size: 22px;
+      max-width: 850px;
+      margin: 0 auto 50px auto;
+      font-weight: 500;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin: 32px auto 0 auto;
+      max-width: 1080px;
+      width: 100%;
+    }
+    .feature-card {
+      max-width: 500px;
+      background: #231a37;
+      border-radius: 17px;
+      padding: 45px 35px 36px 35px;
+      box-shadow: 0 4px 30px rgba(185,103,255,0.08);
+      border: 2px solid #332e3e;
+      min-width: 245px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin: 0 auto;
+    }
+    .feature-card.feature-physics {
+      background: linear-gradient(135deg,#20173f 45%,#462b5c 100%);
+      border: 2px solid #352160;
+    }
+    .feature-card.feature-visual {
+      background: linear-gradient(135deg, #143d48 45%, #162f43 100%);
+      border: 2px solid #123e4c;
+    }
+    .feature-card.feature-realtime {
+      background: linear-gradient(135deg,#301f1b 45%,#231a37 100%);
+      border: 2px solid #6e4534;
+    }
+    .feature-card.feature-scalability {
+      background: linear-gradient(135deg,#113531 45%,#143d2f 100%);
+      border: 2px solid #155b46;
+    }
+    .feature-card.feature-algorithms {
+      background: linear-gradient(135deg,#221d4d 45%,#20173f 100%);
+      border: 2px solid #37328f;
+    }
+    .feature-card.feature-dataset {
+      background: linear-gradient(135deg,#291b2e 45%,#231a37 100%);
+      border: 2px solid #673196;
+    }
+    .feature-icon {
+      font-size: 36px;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(90deg,#b967ff,#ee62b1);
+      border-radius: 14px;
+      margin-bottom: 22px;
+    }
+    .feature-card.feature-visual .feature-icon {
+      background: linear-gradient(90deg,#00e3ff,#00b6c6);
+    }
+    .feature-card.feature-realtime .feature-icon {
+      background: linear-gradient(90deg,#ffb82e,#ff4f2e);
+    }
+    .feature-card.feature-scalability .feature-icon {
+      background: linear-gradient(90deg,#39e19c,#04e9ef);
+    }
+    .feature-card.feature-algorithms .feature-icon {
+      background: linear-gradient(90deg,#7b70fc,#8d9fe2);
+    }
+    .feature-card.feature-dataset .feature-icon {
+      background: linear-gradient(90deg,#e25fc4,#a56dff);
+    }
+    .feature-card h2 {
+      font-size: 27px;
+      font-weight: 700;
+      margin-bottom: 13px;
+    }
+    .feature-card p {
+      color: #c7cbe8;
+      font-size: 17px;
+      margin-bottom: 26px;
+      min-height: 48px;
+    }
+    .feature-cap-title {
+      margin-bottom: 8px;
+      color: #e4e9ff;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 15px;
+    }
+    .feature-cap-list {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 5px;
+    }
+    .feature-cap-list li {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    .feature-cap-list li .dot {
+      margin-right: 8px;
+      font-size: 17px;
+      vertical-align: middle;
+    }
+    .feature-card.feature-physics .dot { color: #ee62b1; }
+    .feature-card .dot { color: #00e8ea; }
+    .feature-card.feature-visual .dot { color: #00e3ff; }
+    .feature-card.feature-visual .dot.cap-green { color: #00f272; }
+    .feature-card.feature-realtime .dot { color: #ffb82e; }
+    .feature-card.feature-scalability .dot { color: #36e3ae; }
+    .feature-card.feature-scalability .dot.cap-green { color: #44ffad; }
+    .feature-card.feature-algorithms .dot { color: #778dff; }
+    .feature-card.feature-dataset .dot { color: #cb6bff; }
+    @media (max-width:1000px){
+      .features-title{font-size: 46px;}
+      .features-grid{gap: 16px;max-width:98vw;}
+      .feature-card{max-width:98vw;}
+    }
+    @media (max-width:800px){
+      .features-grid{grid-template-columns:1fr;gap:10px;}
+      .feature-card{width:100%;margin-bottom:18px;}
+      .features-main{padding-top:36px;}
+      .features-title{font-size: 32px;}
+      .features-subtitle{font-size:18px;}
+    }
+    .feature-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(185,103,255,0.4);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <span class="glow-text">Lunarius</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#demo">Demo</a></li>
+      <li><a href="#" style="background:#0e2542;color:#00e8ea;">Features</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="research.html">Research</a></li>
+    </ul>
+  </nav>
+  <section class="features-main">
+    <h1 class="features-title">Advanced <span class="features-highlight">Features</span></h1>
+    <div class="features-subtitle">
+      Our cutting-edge AI system incorporates the latest advances in computer vision, machine learning,<br>
+      and planetary science to deliver unprecedented hazard detection capabilities
+    </div>
+    <div class="features-grid">
+      <div class="feature-card feature-physics">
+        <div class="feature-icon">🧠</div>
+        <h2>Hybrid AI + Physics Modeling</h2>
+        <p>
+          Advanced neural networks combined with physics-based simulations for unmatched terrain analysis accuracy.
+          Our hybrid approach leverages both data-driven learning and fundamental physics principles.
+        </p>
+        <div class="feature-cap-title">KEY CAPABILITIES:</div>
+        <ul class="feature-cap-list">
+          <li><span class="dot">⚫</span> U-Net architecture for semantic segmentation</li>
+          <li><span class="dot">⚫</span> Physics-based slope stability analysis</li>
+          <li><span class="dot">⚫</span> Multi-modal sensor fusion</li>
+          <li><span class="dot">⚫</span> Uncertainty quantification</li>
+        </ul>
+      </div>
+      <div class="feature-card feature-visual">
+        <div class="feature-icon">🛡</div>
+        <h2>3D Hazard Visualization</h2>
+        <p>
+          Comprehensive 3D mapping technology provides detailed terrain understanding with precise risk assessment and visualization capabilities for mission planning.
+        </p>
+        <div class="feature-cap-title">KEY CAPABILITIES:</div>
+        <ul class="feature-cap-list">
+          <li><span class="dot cap-green">🟢</span> Real-time 3D reconstruction</li>
+          <li><span class="dot">⚡</span> Shadow analysis and detection</li>
+          <li><span class="dot">⚫</span> Terrain slope computation</li>
+          <li><span class="dot">⚫</span> Interactive hazard mapping</li>
+        </ul>
+      </div>
+      <div class="feature-card feature-realtime">
+        <div class="feature-icon">⚡</div>
+        <h2>Real-time Processing</h2>
+        <p>
+          Lightning-fast analysis enables immediate hazard identification and path optimization with sub-second response times for critical mission decisions.
+        </p>
+        <div class="feature-cap-title">KEY CAPABILITIES:</div>
+        <ul class="feature-cap-list">
+          <li><span class="dot">●</span> &lt; 2 second processing time</li>
+          <li><span class="dot">●</span> Parallel computing optimization</li>
+          <li><span class="dot">●</span> Edge deployment ready</li>
+          <li><span class="dot">●</span> Streaming data support</li>
+        </ul>
+      </div>
+      <div class="feature-card feature-scalability">
+        <div class="feature-icon">🌐</div>
+        <h2>Cross-domain Scalability</h2>
+        <p>
+          Adaptable architecture extends beyond lunar missions to Mars, asteroids, and other planetary exploration scenarios with minimal reconfiguration.
+        </p>
+        <div class="feature-cap-title">KEY CAPABILITIES:</div>
+        <ul class="feature-cap-list">
+          <li><span class="dot cap-green">●</span> Multi-planetary terrain support</li>
+          <li><span class="dot">●</span> Scalable cloud architecture</li>
+          <li><span class="dot">●</span> Modular AI components</li>
+          <li><span class="dot">●</span> Transfer learning capabilities</li>
+        </ul>
+      </div>
+      <div class="feature-card feature-algorithms">
+        <div class="feature-icon">⬅</div>
+        <h2>Advanced Algorithms</h2>
+        <p>
+          State-of-the-art computer vision and machine learning algorithms deliver robust, reliable, and explainable detection of hazards in complex lunar terrains.
+        </p>
+        <div class="feature-cap-title">KEY CAPABILITIES:</div>
+        <ul class="feature-cap-list">
+          <li><span class="dot">●</span> Explainable AI framework</li>
+          <li><span class="dot">●</span> Outlier detection and adaptation</li>
+          <li><span class="dot">●</span> Occlusion-aware analysis</li>
+          <li><span class="dot">●</span> Domain generalization</li>
+        </ul>
+      </div>
+      <div class="feature-card feature-dataset">
+        <div class="feature-icon">🗃</div>
+        <h2>Comprehensive Dataset</h2>
+        <p>
+          Trained on extensive datasets from NASA missions including LROC, HiRISE, Chandrayaan, and a broad collection of simulated and ground-truth data.
+        </p>
+        <div class="feature-cap-title">KEY CAPABILITIES:</div>
+        <ul class="feature-cap-list">
+          <li><span class="dot">●</span> Multi-source image integration</li>
+          <li><span class="dot">●</span> Diverse terrain representation</li>
+          <li><span class="dot">●</span> Real & synthetic data fusion</li>
+          <li><span class="dot">●</span> Quality-controlled labeling</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

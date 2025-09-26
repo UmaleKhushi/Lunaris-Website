@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Analysis & Hazard Risk Report</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0a1521;
+      color: white;
+      padding: 20px 10%;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 36px;
+      color: #00d4ff;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      color: #00f2ff;
+    }
+    p { margin: 8px 0; }
+    ul { margin: 12px 0 20px 20px; }
+    ul li { margin-bottom: 6px; }
+
+    /* Shared Cards */
+    .card, .summary-box {
+      background: #112538;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+      margin-bottom: 30px;
+    }
+
+    /* Hazard status */
+    .status-high { color: orange; font-weight: bold; }
+    .status-medium { color: yellow; font-weight: bold; }
+    .status-critical { color: red; font-weight: bold; }
+
+    /* Risk Assessment Styles */
+    .risk-level { font-size: 32px; font-weight: bold; }
+    .safety { color: #22c55e; font-weight: bold; }
+
+    .bar-chart {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+    .bar {
+      width: 60px;
+      background-color: #334155;
+      border-radius: 6px;
+      position: relative;
+      height: 150px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .bar-fill {
+      width: 100%;
+      border-radius: 6px;
+      background-color: #fb923c;
+    }
+    .bar-label { text-align: center; margin-top: 8px; }
+
+    /* Safe Path Grid */
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .detail-card {
+      background-color: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .detail-card h4 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #cbd5e1;
+    }
+    .detail-card p {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    .footer-note {
+      margin-top: 40px;
+      padding-top: 15px;
+      border-top: 1px solid #222;
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+    }
+
+    /* Video */
+    .video-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    video {
+      width: 80%;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0px 0px 12px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <h1>📑 AI Terrain Analysis & Hazard Risk Report</h1>
+
+  <!-- Video -->
+  <div class="video-container">
+    <video id="video1" controls>
+      <source src="video.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
+
+  <!-- AI Summary -->
+  <div class="summary-box">
+    <p><strong>Generated At:</strong> <span id="time"></span></p>
+    <p><strong>Waypoints:</strong> 6</p>
+    <p><strong>Path Length:</strong> 1118m</p>
+    <p><strong>Path Confidence:</strong> 94.2% (High confidence path avoiding all critical and high-risk areas)</p>
+  </div>
+
+  <!-- Hazards -->
+<h2>Detected Hazards</h2>
+<ul>
+  <li>Crater – Large crater detected (15m diameter) <span class="status-high">High Risk</span></li>
+  <li>Boulder – Boulder field (proceed with caution) <span class="status-medium">Medium Risk</span></li>
+  <li>Slope – Steep slope >30° (avoid) <span class="status-critical">Critical Risk</span></li>
+</ul>
+
+<!-- Medium Pie Chart -->
+<div class="chart-container">
+  <canvas id="hazardPieChart"></canvas>
+</div>
+
+<!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+  .chart-container {
+    width: 400px;   /* Medium size */
+    height: 400px;  /* Medium size */
+    margin: 20px 0; /* Space on top and bottom only */
+  }
+</style>
+
+
+<script>
+  const ctx = document.getElementById('hazardPieChart').getContext('2d');
+  const hazardChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['High Risk', 'Medium Risk', 'Critical Risk'],
+      datasets: [{
+        data: [1, 1, 1],  // counts of hazards
+        backgroundColor: ['orange', 'yellow', 'red'],
+        borderColor: ['#fff', '#fff', '#fff'],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false, // keeps size fixed
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: 'white',
+            font: { size: 14 }
+          }
+        },
+        title: {
+          display: true,
+          text: 'Hazard Distribution',
+          color: '#00f2ff',
+          font: { size: 18 }
+        }
+      }
+    }
+  });
+</script>
+
+
+  <!-- Safe Path Details -->
+  <div class="card">
+    <h2>Safe Path Details</h2>
+    <div class="details">
+      <div class="detail-card">
+        <h4>Confidence Level</h4>
+        <p>98%</p>
+      </div>
+      <div class="detail-card">
+        <h4>Accuracy Score</h4>
+        <p>96%</p>
+      </div>
+      <div class="detail-card">
+        <h4>Path Length</h4>
+        <p>5.2 km</p>
+      </div>
+      <div class="detail-card">
+        <h4>Estimated Travel Time</h4>
+        <p>2 hours 30 minutes</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    © 2025 Lunarius – AI-Driven Hazard Detection & Path Planning
+  </div>
+
+  <script>
+    // Auto-fill the generated time
+    document.getElementById("time").textContent = new Date().toLocaleString();
+  </script>
+</body>
+</html>

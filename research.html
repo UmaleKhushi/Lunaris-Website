@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0a1521;
+      color: white;
+      scroll-behavior: smooth;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1s ease forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(80px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 21, 33, 0.95);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10%;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #00d4ff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #00f2ff;
+    }
+
+    /* Research Section */
+    .research-section {
+      padding: 120px 10% 100px;
+      background: #0a1521;
+      text-align: center;
+    }
+
+    .research-title {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .research-title .research-word { color: white; }
+    .research-title .development-word { color: #00d4ff; }
+
+    .research-subtitle {
+      font-size: 18px;
+      color: white;
+      font-weight: bold;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .datasets-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .datasets-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .dataset-card {
+      flex: 1;
+      min-width: 280px;
+      background: #112538;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+      position: relative;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    .dataset-card:nth-child(1) { animation-delay: 0s; }
+    .dataset-card:nth-child(2) { animation-delay: 1s; }
+    .dataset-card:nth-child(3) { animation-delay: 2s; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dataset-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 242, 255, 0.7);
+    }
+
+    .dataset-card h3 { font-size: 22px; margin-bottom: 12px; color: #ffffff; }
+    .dataset-card p { font-size: 15px; margin-bottom: 8px; color: #dddddd; }
+
+    .dataset-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #00d4ff;
+      color: #0d1b2a;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .dataset-btn:hover {
+      background: #00f2ff;
+      box-shadow: 0 0 15px rgba(0, 242, 255, 0.8);
+    }
+
+    .status {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .status.active { background: #28a745; }
+    .status.operational { background: #17a2b8; }
+
+    /* Publications Section */
+    .publications-section {
+      padding: 60px 10% 100px;
+      background: #0a1521;
+    }
+
+    .publications-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards;
+      animation-delay: 3.5s;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .publication-card {
+      background: #112538;
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards;
+    }
+
+    .publication-card:nth-child(1) { animation-delay: 4s; }
+    .publication-card:nth-child(2) { animation-delay: 4.5s; }
+    .publication-card:nth-child(3) { animation-delay: 5s; }
+
+    .publication-card h3 { font-size: 15px; font-weight: bold; margin-bottom: 8px; color: #ffffff; }
+    .publication-card p { margin: 5px 0; color: #ddd; font-size: 14px; }
+
+    .tags { margin-top: 10px; }
+    .tag {
+      display: inline-block;
+      background: #003f5c;
+      color: #00f2ff;
+      padding: 6px 12px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .read-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #00d4ff;
+      color: #0a1521;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .read-btn:hover {
+      background: #00f2ff;
+      box-shadow: 0 0 15px rgba(0, 242, 255, 0.8);
+    }
+
+    /* Footer Styles */
+    .footer {
+      background: linear-gradient(180deg, #0a1521, #111a28);
+      padding: 50px 10% 20px;
+      color: #ddd;
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-left {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #00d4ff;
+      margin-bottom: 12px;
+    }
+
+    .footer-left p { font-size: 16px; color: #aaa; max-width: 320px; }
+    .footer-links { flex: 1; min-width: 200px; }
+    .footer-links h3,
+    .footer-contact h3 { font-size: 18px; margin-bottom: 15px; color: #fff; }
+    .footer-links ul { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: #aaa; text-decoration: none; transition: 0.3s; }
+    .footer-links a:hover { color: #00f2ff; }
+    .footer-contact { flex: 1; min-width: 200px; color: #aaa; }
+    .footer-contact p { margin: 6px 0; font-size: 14px; }
+    .footer-bottom { border-top: 1px solid #222; margin-top: 30px; padding-top: 15px; text-align: center; font-size: 13px; color: #777; }
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Lunarius</div>
+    <div class="nav-links">
+      <a href="index.html#demo">Demo</a>
+      <a href="research.html">Research</a>
+    </div>
+  </nav>
+
+  <!-- Research Section -->
+  <section id="research" class="research-section">
+    <h1 class="research-title"><span class="research-word">Research</span> & <span class="development-word">Development</span></h1>
+    <p class="research-subtitle">
+      Our work is built on rigorous scientific research and extensive validation using the most comprehensive planetary datasets available.
+    </p>
+
+    <h2 class="datasets-title">📂 Training Datasets</h2>
+
+    <div class="datasets-container">
+      <!-- NASA LROC -->
+      <div class="dataset-card">
+        <div class="status active">Active</div>
+        <h3>NASA LROC</h3>
+        <p>Lunar Reconnaissance Orbiter Camera data providing high-resolution images of lunar surface features and terrain</p>
+        <p><strong>Coverage:</strong> Global lunar coverage</p>
+        <p><strong>Resolution:</strong> 0.5m – 100m/pixel</p>
+        <a href="https://lunar.gsfc.nasa.gov" target="_blank" class="dataset-btn">Access Dataset</a>
+      </div>
+
+      <!-- HiRISE -->
+      <div class="dataset-card">
+        <div class="status active">Active</div>
+        <h3>HiRISE</h3>
+        <p>High Resolution Imaging Science Experiment data from Mars Reconnaissance Orbiter for Martian terrain analysis</p>
+        <p><strong>Coverage:</strong> Selected Mars regions</p>
+        <p><strong>Resolution:</strong> 25–50cm/pixel</p>
+        <a href="https://www.kaggle.com/datasets/gurveersinghvirk/crater-boulder-moon-yolo-format" target="_blank" class="dataset-btn">Access Dataset</a>
+      </div>
+
+      <!-- Boulders Dataset -->
+      <div class="dataset-card">
+        <div class="status operational">Active</div>
+        <h3>Boulders Dataset</h3>
+        <p>Earth observation data used for algorithm validation and cross-domain testing of terrain analysis techniques</p>
+        <p><strong>Coverage:</strong> Global Earth coverage</p>
+        <p><strong>Resolution:</strong> 10–60m/pixel</p>
+        <a href="https://www.kaggle.com/datasets/gurveersinghvirk/crater-boulder-moon-yolo-format" target="_blank" class="dataset-btn">Access Dataset</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications Section -->
+  <section class="publications-section">
+    <h2 class="publications-title">📑 Key Publications</h2>
+
+    <div class="publication-card">
+      <h3>Robinson, M.S., et al. (2010). Lunar Reconnaissance Orbiter Camera (LROC) dataset. NASA Planetary Data System</h3>
+      <div class="tags">
+        <span class="tag">Deep Learning</span>
+        <span class="tag">Navigation</span>
+        <span class="tag">Lunar Exploration</span>
+      </div>
+      <a href="https://lroc.sese.asu.edu/" target="_blank" class="read-btn">📖 Read</a>
+    </div>
+
+    <div class="publication-card">
+      <h3>McEwen, A.S., et al. (2007). Mars Reconnaissance Orbiter’s High-Resolution Imaging Science Experiment (HiRISE). Journal of Geophysical Research, 112(E5)</h3>
+      <div class="tags">
+        <span class="tag">Computer Vision</span>
+        <span class="tag">U-Net</span>
+        <span class="tag">Hazard Detection</span>
+      </div>
+      <a href="https://www.uahirise.org/" target="_blank" class="read-btn">📖 Read</a>
+    </div>
+
+    <div class="publication-card">
+      <h3>European Space Agency (ESA). (2015–present). Copernicus Sentinel-2 Earth Observation Data. ESA Open Access Hub</h3>
+      <div class="tags">
+        <span class="tag">Physics-Informed ML</span>
+        <span class="tag">Terrain Analysis</span>
+        <span class="tag">Planetary Science</span>
+      </div>
+      <a href="https://scihub.copernicus.eu/." target="_blank" class="read-btn">📖 Read</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2 class="footer-logo">Lunarius</h2>
+        <p>Advanced AI-driven hazard detection and safe path planning for lunar rover missions. Ensuring mission success through intelligent terrain analysis.</p>
+      </div>
+
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#demo">Demo</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#team">Team</a></li>
+          <li><a href="research.html">Research</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>Built for SIH 2025</p>
+        <p>Space Innovation Challenge</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Lunarius. Advancing lunar exploration through AI innovation.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
